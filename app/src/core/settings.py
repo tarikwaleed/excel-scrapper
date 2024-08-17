@@ -14,7 +14,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 import os
 from pathlib import Path
 
-if os.getenv("MONHNA_ENVIRONMENT") == "dev":
+if os.getenv("MYAPP_ENVIRONMENT") == "dev":
     from dotenv import find_dotenv, load_dotenv
 
     load_dotenv(find_dotenv(), override=True)
@@ -44,11 +44,9 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "corsheaders",
     "core",
-    "rest_framework",
-    "django_extensions",
     "shared.apps.SharedConfig",
+    "scrapper.apps.ScrapperConfig"
 ]
 
 MIDDLEWARE = [
@@ -180,6 +178,18 @@ LOGGING = {
             "filename": f"{LOG_DIR}/logs/simpleapi.log",
             "formatter": "verbose",
         },
+        "scrap": {
+            "level": "DEBUG",
+            "class": "logging.FileHandler",
+            "filename": f"{LOG_DIR}/logs/scrap.log",
+            "formatter": "verbose",
+        },
+        "exceptions": {
+            "level": "DEBUG",
+            "class": "logging.FileHandler",
+            "filename": f"{LOG_DIR}/logs/exceptions.log",
+            "formatter": "verbose",
+        },
     },
     "loggers": {
         "django": {
@@ -188,6 +198,14 @@ LOGGING = {
         },
         "simpleapi.views": {
             "handlers": ["console", "simpleapi"],
+            "level": "DEBUG",
+        },
+        "scrapper.management.commands.scrap": {
+            "handlers": ["console", "scrap"],
+            "level": "DEBUG",
+        },
+        "exceptions": {
+            "handlers": ["console", "exceptions"],
             "level": "DEBUG",
         },
     },

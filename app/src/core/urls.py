@@ -6,7 +6,6 @@ from . import views
 
 urlpatterns = [
     path(route="admin/", view=admin.site.urls),
-    path("api/simpleapi", include("simpleapi.urls")),
 ]
 
 if settings.DEBUG:
