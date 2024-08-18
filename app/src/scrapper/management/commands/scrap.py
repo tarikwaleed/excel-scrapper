@@ -27,7 +27,7 @@ class Command(BaseCommand):
             products_profit_path=os.getenv('PRODUCTS_PROFIT')
             # if the download path does not exist create it
             scraper.download_file(
-                'https://al-afaq20.daftra.com/owner/products/products_profit.csv?date_range_selector=lastmonth&sort=2&sort_order=desc',
+                'https://al-afaq20.daftra.com/owner/products/products_profit.xlsx?date_range_selector=lastmonth&sort=2&sort_order=desc',
                 products_profit_path
             )
 
