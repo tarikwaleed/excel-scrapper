@@ -23,18 +23,26 @@ class Command(BaseCommand):
         current_function_name = inspect.currentframe().f_code.co_name
 
         try:
-            scraper = Scrapper(headless=True)
+            scraper = Scrapper()
             products_profit_path=os.getenv('PRODUCTS_PROFIT')
+            low_inventory_path=os.getenv('LOW_INVENTORY')
+            clients_sales_path=os.getenv('CLIENTS_SALES')
+            
             # if the download path does not exist create it
-            scraper.download_file(
-                'https://al-afaq20.daftra.com/owner/products/products_profit.xlsx?date_range_selector=lastmonth&sort=2&sort_order=desc',
-                products_profit_path
-            )
+            # scraper.download_file(
+            #     'https://al-afaq20.daftra.com/owner/products/products_profit.csv?date_range_selector=lastmonth&sort=2&sort_order=desc',
+            #     products_profit_path
+            # )
 
             # scraper.download_file(
-            #     'https://example.com/path/to/file2.csv',
-            #     '/path/to/download/location2'
+            #     'https://al-afaq20.daftra.com/owner/products/stocktaking_sheet.csv?data%5Bgroup_by%5D=&data%5Border_by%5D=stock_balance.asc&data%5Bcategory%5D=&data%5Bbrand%5D=&data%5Bstore%5D=&data%5Bhide_zero_values%5D=0&data%5Btotal_count%5D=0',
+            #     low_inventory_path
             # )
+
+            scraper.download_file(
+                'https://al-afaq20.daftra.com/owner/reports/report/clients_sales.csv?client_id=&from_date=19%2F07%2F2024&to_date=19%2F08%2F2024&group_by=Branch&order_by=&summary=&show_report=1',
+                clients_sales_path
+            )
         except Exception as e:
             exception_count += 1
             exceptions_logger.error(

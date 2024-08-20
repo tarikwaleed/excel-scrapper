@@ -4,14 +4,10 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-django = "*"
-selenium = "*"
-webdriver-manager = "*"
-requests = "*"
+djangorestframework = "*"
+django-cors-headers = "*"
 
 [dev-packages]
-black = "*"
-python-dotenv = "*"
 
 [requires]
 python_version = "3.10"

@@ -45,8 +45,11 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "core",
+    "rest_framework",
+    "corsheaders",
     "shared.apps.SharedConfig",
     "scrapper.apps.ScrapperConfig"
+
 ]
 
 MIDDLEWARE = [
@@ -155,7 +158,7 @@ STATIC_ROOT = BASE_DIR.parent / "local-cdn" / "static"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # put the ip of your front-end here
-CORS_ALLOWED_ORIGINS = ["http://localhost:3000", "https://myapp.vercel.app"]
+CORS_ALLOWED_ORIGINS = ["http://localhost:3000","http://localhost:3001", "https://myapp.vercel.app"]
 
 LOGGING = {
     "version": 1,

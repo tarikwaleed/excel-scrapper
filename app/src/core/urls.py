@@ -6,6 +6,9 @@ from . import views
 
 urlpatterns = [
     path(route="admin/", view=admin.site.urls),
+    path(route='api/sales/',view=include('sales.urls')),
+    path(route='api/inventory/',view=include('inventory.urls')),
+    path(route='api/stats/',view=include('stats.urls')),
 ]
 
 if settings.DEBUG:
